@@ -19,7 +19,7 @@
      [:td
       (if enrolled
         [:a {:data-on:click (ds/get "/courses/enrolled/" code)}
-         [:span (length enrolled) (hg/raw "&nbsp;enrolled")]])] # Issue #1
+         [:span (length enrolled)]])] # Issue #1
      [:td
       [:a {:data-on:click (ds/get "/courses/edit/" code)}
        "Edit"]]]
@@ -189,9 +189,7 @@
    [:td {:colspan "7"}
     (if-not (empty? enrolled)
       [:a {:data-on:click (ds/get (string "/courses/clear/enrolled/" code))} "close"])
-    [:ul
-     (seq [{:fullname fn :email em} :in enrolled]
-       [:li fn " <" em ">"])]]]) # Issue 2
+    (string/join (seq [{:email em} :in enrolled] em) ", ")]]) # Issue 2
 
 (defh /courses/enrolled
   "Enrolled students for a course detail"

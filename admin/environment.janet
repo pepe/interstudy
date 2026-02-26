@@ -53,7 +53,13 @@
     (if ets
       [:small
        [:div (dt/format-date-time ets) " "]
-       [:div (length ecs) " for " ecr " credits"]])
+       [:div (length ecs) " for " ecr " credits"]
+       [:div
+        (if (empty? ecs)
+          ""
+          (if (= (type (first ecs)) :string)
+            (string/join ecs "; ")
+            (string/join (seq [c :in ecs] (or (get c :code) (get c :id) (string c))) "; ")))]])
     [:a {:href (string student "/enroll/" (hash em))
          :target "_blank"} "Enroll link"]]]) # 3 Issue
 
