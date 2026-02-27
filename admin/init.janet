@@ -19,7 +19,7 @@
      [:td
       (if enrolled
         [:a {:data-on:click (ds/get "/courses/enrolled/" code)}
-         [:span (length enrolled) (hg/raw "&nbsp;enrolled")]])] # Issue #1
+         [:span (length enrolled) (hg/raw "&nbsp;")]])] # Issue #1
      [:td
       [:a {:data-on:click (ds/get "/courses/edit/" code)}
        "Edit"]]]
